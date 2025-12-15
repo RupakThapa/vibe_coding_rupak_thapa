@@ -28,20 +28,22 @@
       <div class="hero-cv-buttons">
         <h3 class="cv-buttons-title">Download CV</h3>
         <div class="cv-buttons-grid">
-          <a href="/cv/" class="btn btn-cv btn-cv-text">
+          <button class="btn btn-cv btn-cv-text" data-cv-type="text">
             <i class="fas fa-file-alt" aria-hidden="true"></i>
             <span>Text CV</span>
-          </a>
-          <a href="/cv/" class="btn btn-cv btn-cv-visual">
+          </button>
+          <button class="btn btn-cv btn-cv-visual" data-cv-type="visual">
             <i class="fas fa-image" aria-hidden="true"></i>
             <span>Visual CV</span>
-          </a>
-          <a href="/cv/" class="btn btn-cv btn-cv-audio">
+          </button>
+          <button class="btn btn-cv btn-cv-audio" data-cv-type="audio">
             <i class="fas fa-headphones" aria-hidden="true"></i>
             <span>Audio CV</span>
-          </a>
+          </button>
         </div>
       </div>
+      
+      {% include cv-modal.html %}
     </div>
   </div>
 </section>

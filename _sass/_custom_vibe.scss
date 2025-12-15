@@ -23,30 +23,88 @@ $border-accent: 4px solid #f37f1b;
 // Global Theme Overrides
 // ============================================
 
-// Dark Theme (Default)
-html[data-theme="dark"] body {
+// Set html and body to dark by default - Fix white sides
+html {
+  background-color: $background-dark !important;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// Dark Theme (Default) - Apply to all cases
+html[data-theme="dark"] body,
+html:not([data-theme]) body,
+body {
   background-color: $background-dark !important;
   color: $text-body !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// Ensure no white backgrounds anywhere
+* {
+  &::before,
+  &::after {
+    // Ensure pseudo-elements don't have white backgrounds
+  }
 }
 
 // Light Theme (Explicit)
-html[data-theme="light"] body {
-  background-color: #f3f4f6 !important; // background.light
-  color: #1f2937 !important; // text.primary_light
+html[data-theme="light"] {
+  background-color: #f3f4f6 !important;
+  
+  body {
+    background-color: #f3f4f6 !important; // background.light
+    color: #1f2937 !important; // text.primary_light
+  }
 }
 
 // Disco Theme
-html[data-theme="disco"] body {
+html[data-theme="disco"] {
   background: linear-gradient(45deg, #4b0082, #800080);
-  color: #e0e0e0 !important;
+  
+  body {
+    background: linear-gradient(45deg, #4b0082, #800080);
+    color: #e0e0e0 !important;
+  }
 }
 
 body {
+  background-color: $background-dark !important; // Default dark background
   padding-top: 80px !important;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; // Prevent horizontal scroll
 
   @media (max-width: 768px) {
     padding-top: 60px !important;
   }
+}
+
+// Ensure all wrapper/container elements are dark
+.wrapper,
+.container,
+.site-wrapper {
+  background-color: $background-dark !important;
+}
+
+// Ensure all content sections are dark
+.intro-story-section,
+.what-i-do-section,
+.design-philosophy-section,
+.current-focus-section,
+.featured-projects-section,
+.homepage-content {
+  background-color: $background-dark !important;
+}
+
+// Override any default white backgrounds from theme
+.page__inner-wrap,
+.page__content,
+.archive__item {
+  background-color: transparent !important;
 }
 
 // Custom Scrollbar
@@ -404,7 +462,8 @@ html[data-theme="disco"] .project-card {
 }
 
 #main {
-
+  background-color: $background-dark !important;
+  
   // Use design system container max-width: 1280px
   @media (min-width: 64em) {
     max-width: 1280px !important;
@@ -573,6 +632,8 @@ html[data-theme="light"] .page__footer {
   border: 2px solid transparent !important;
   min-width: 140px;
   justify-content: center;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif !important;
   
   i {
     font-size: 1rem;
@@ -876,6 +937,197 @@ html[data-theme="light"] .page__footer {
 .homepage-main {
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+// ============================================
+// CV Modal Styles
+// ============================================
+.cv-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.cv-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cv-modal__content {
+  position: relative;
+  background: $background-dark;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  
+  @media (min-width: 768px) {
+    max-width: 900px;
+  }
+  
+  @media (min-width: 1024px) {
+    max-width: 1100px;
+  }
+}
+
+.cv-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $text-heading;
+  font-size: 1.25rem;
+  z-index: 10;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+  }
+  
+  i {
+    pointer-events: none;
+  }
+}
+
+.cv-modal__body {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.cv-modal__title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 2rem !important;
+  color: $text-heading !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem !important;
+  }
+}
+
+.cv-modal__iframe-container,
+.cv-modal__pdf-container {
+  width: 100%;
+  height: 70vh;
+  border-radius: 8px;
+  overflow: hidden;
+  background: $surface-card;
+  margin-bottom: 1.5rem;
+  
+  @media (max-width: 768px) {
+    height: 60vh;
+  }
+}
+
+.cv-modal__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.cv-modal__image-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: $surface-card;
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  
+  @media (max-width: 768px) {
+    max-height: 60vh;
+  }
+}
+
+.cv-modal__image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto;
+}
+
+.cv-modal__audio-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  background: $surface-card;
+  border-radius: 12px;
+}
+
+.cv-modal__audio-player {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  outline: none;
+  
+  &::-webkit-media-controls-panel {
+    background-color: $background-dark;
+  }
+}
+
+.cv-modal__audio-info {
+  color: $text-body;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.cv-modal__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  
+  .btn {
+    min-width: 150px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 // ============================================

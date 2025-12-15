@@ -127,7 +127,7 @@
       <nav id="site-nav-static" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="http://localhost:4001/">Your Name / Site Title</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="http://localhost:4001/">Your Name</a></li>
           
           
           <li class="masthead__menu-item"><a href="http://localhost:4001/portfolio/">Projects</a></li>
@@ -206,20 +206,74 @@
       <div class="hero-cv-buttons">
         <h3 class="cv-buttons-title">Download CV</h3>
         <div class="cv-buttons-grid">
-          <a href="/cv/" class="btn btn-cv btn-cv-text">
+          <button class="btn btn-cv btn-cv-text" data-cv-type="text">
             <i class="fas fa-file-alt" aria-hidden="true"></i>
             <span>Text CV</span>
-          </a>
-          <a href="/cv/" class="btn btn-cv btn-cv-visual">
+          </button>
+          <button class="btn btn-cv btn-cv-visual" data-cv-type="visual">
             <i class="fas fa-image" aria-hidden="true"></i>
             <span>Visual CV</span>
-          </a>
-          <a href="/cv/" class="btn btn-cv btn-cv-audio">
+          </button>
+          <button class="btn btn-cv btn-cv-audio" data-cv-type="audio">
             <i class="fas fa-headphones" aria-hidden="true"></i>
             <span>Audio CV</span>
-          </a>
+          </button>
         </div>
       </div>
+      
+      
+
+<!-- CV Modal Overlay -->
+<div id="cv-modal" class="cv-modal" style="display: none;">
+  <div class="cv-modal__overlay"></div>
+  <div class="cv-modal__content">
+    <button class="cv-modal__close" aria-label="Close modal">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    
+    <!-- Text CV Modal -->
+    <div id="cv-modal-text" class="cv-modal__body" style="display: none;">
+      <h2 class="cv-modal__title">Text CV</h2>
+      <div class="cv-modal__pdf-container">
+        <iframe src="http://localhost:4001/files/resume_ux__Copy__ai_blessing.pdf" frameborder="0" class="cv-modal__iframe"></iframe>
+      </div>
+      <div class="cv-modal__actions">
+        <a href="http://localhost:4001/files/resume_ux__Copy__ai_blessing.pdf" target="_blank" class="btn btn-primary">Open in New Tab</a>
+        <a href="http://localhost:4001/files/resume_ux__Copy__ai_blessing.pdf" download class="btn btn-secondary">Download PDF</a>
+      </div>
+    </div>
+    
+    <!-- Visual CV Modal -->
+    <div id="cv-modal-visual" class="cv-modal__body" style="display: none;">
+      <h2 class="cv-modal__title">Visual CV</h2>
+      <div class="cv-modal__image-container">
+        <img src="http://localhost:4001/files/visual cv.png" alt="Visual CV" class="cv-modal__image" />
+      </div>
+      <div class="cv-modal__actions">
+        <a href="http://localhost:4001/files/visual cv.png" target="_blank" class="btn btn-primary">View Full Size</a>
+        <a href="http://localhost:4001/files/visual cv.png" download class="btn btn-secondary">Download Image</a>
+      </div>
+    </div>
+    
+    <!-- Audio CV Modal -->
+    <div id="cv-modal-audio" class="cv-modal__body" style="display: none;">
+      <h2 class="cv-modal__title">Audio CV</h2>
+      <div class="cv-modal__audio-container">
+        <audio controls class="cv-modal__audio-player">
+          <source src="http://localhost:4001/files/cv voice.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <p class="cv-modal__audio-info">Listen to Rupak's professional journey and experience.</p>
+      </div>
+      <div class="cv-modal__actions">
+        <a href="http://localhost:4001/files/cv voice.mp3" download class="btn btn-primary">Download Audio</a>
+        <a href="/cv/" class="btn btn-secondary">View Text CV</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </div>
   </div>
 </section>
@@ -598,6 +652,7 @@
 
     <script type="module" src="http://localhost:4001/assets/js/main.min.js"></script>
 <script src="http://localhost:4001/assets/js/particles-custom.js"></script>
+<script src="http://localhost:4001/assets/js/cv-modal.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 

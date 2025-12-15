@@ -1,0 +1,64 @@
+/*
+ * Typography System - Inter Font Family
+ * Dark Editorial Theme
+ */
+
+// Base font family
+body,
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+// H1 - Hero (Uppercase, Weight 900, Tracking -0.03em)
+// Note: $text-heading variable is defined in _custom_vibe.scss
+h1,
+.page__title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: #ffffff !important; // $text-heading
+}
+
+// H2 - Weight 800
+h2 {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  color: #ffffff !important; // $text-heading
+}
+
+// H3 - Weight 700
+h3 {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  color: #ffffff !important; // $text-heading
+}
+
+// H4-H6 - Inherit from theme but ensure Inter
+h4, h5, h6 {
+  font-family: 'Inter', sans-serif !important;
+  color: #ffffff !important; // $text-heading
+}
+
+// Body text - Weight 400, Line-height 1.7
+body,
+p,
+.page__content,
+.archive__item-excerpt {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  color: #9ca3af !important; // $text-body
+}
+
+// Links
+a {
+  font-family: 'Inter', sans-serif !important;
+}
+
+// Navigation
+.masthead,
+.nav__list {
+  font-family: 'Inter', sans-serif !important;
+}
+

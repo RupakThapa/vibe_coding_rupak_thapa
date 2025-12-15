@@ -6,32 +6,52 @@
       <nav id="site-nav-static" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title
+              }}</a></li>
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
-            {% else %}
-              {% assign domain = base_path %}
-            {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+          {% if link.url contains 'http' %}
+          {% assign domain = '' %}
+          {% else %}
+          {% assign domain = base_path %}
+          {% endif %}
+          <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
-          
+
           {% comment %} Social links from sidebar {% endcomment %}
           {% if site.author.linkedin %}
-            <li class="masthead__menu-item"><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          <li class="masthead__menu-item"><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}"
+              target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </li>
           {% endif %}
           {% if site.author.github %}
-            <li class="masthead__menu-item"><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+          <li class="masthead__menu-item"><a href="https://github.com/{{ site.author.github }}" target="_blank"
+              rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
           {% endif %}
           {% if site.author.email %}
-            <li class="masthead__menu-item"><a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a></li>
+          <li class="masthead__menu-item"><a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope"
+                aria-hidden="true"></i> Email</a></li>
           {% endif %}
           {% if site.author.twitter %}
-            <li class="masthead__menu-item"><a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter</a></li>
+          <li class="masthead__menu-item"><a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"
+              rel="noopener noreferrer"><i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter</a></li>
           {% endif %}
-          
+
           <li id="theme-toggle" class="masthead__menu-item persist tail">
-            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+            <a role="button" aria-labelledby="theme-icon">
+              <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i>
+            </a>
+            <ul class="theme-dropdown">
+              <li data-theme="light">
+                <i class="fa-solid fa-sun"></i> Light
+              </li>
+              <li data-theme="dark">
+                <i class="fa-solid fa-moon"></i> Dark
+              </li>
+              <li data-theme="disco">
+                <img src="/images/disco-ball.png" alt="Disco" class="disco-icon"
+                  style="width: 1em; height: 1em; vertical-align: -0.125em;"> Disco
+              </li>
+            </ul>
           </li>
         </ul>
         <ul class="hidden-links hidden"></ul>

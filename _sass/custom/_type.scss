@@ -16,26 +16,49 @@ h1,
   font-family: 'Inter', sans-serif !important;
   font-weight: 900 !important;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.03em !important;
+  font-size: 4rem !important; // 4xl-5xl equivalent
+  line-height: 1.1 !important;
   color: #ffffff !important; // $text-heading
+
+  @media (min-width: 768px) {
+    font-size: 5rem !important;
+  }
 }
 
-// H2 - Weight 800
+// Hero specific class if needed for 6xl-8xl
+.hero-title {
+  font-size: 5rem !important;
+
+  @media (min-width: 768px) {
+    font-size: 6rem !important;
+  }
+}
+
+// H2 - Weight 700 (2xl-3xl)
 h2 {
   font-family: 'Inter', sans-serif !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
+  font-size: 2rem !important;
   color: #ffffff !important; // $text-heading
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem !important;
+  }
 }
 
-// H3 - Weight 700
+// H3 - Weight 700 (xl)
 h3 {
   font-family: 'Inter', sans-serif !important;
   font-weight: 700 !important;
+  font-size: 1.5rem !important;
   color: #ffffff !important; // $text-heading
 }
 
 // H4-H6 - Inherit from theme but ensure Inter
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-family: 'Inter', sans-serif !important;
   color: #ffffff !important; // $text-heading
 }
@@ -61,4 +84,3 @@ a {
 .nav__list {
   font-family: 'Inter', sans-serif !important;
 }
-

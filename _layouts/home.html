@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<div id="main" role="main" class="homepage-main">
+  {% include hero-homepage.html %}
+  {% include intro-story.html %}
+  {% include what-i-do.html %}
+  {% include design-philosophy.html %}
+  {% include current-focus.html %}
+  
+  {% if page.show_projects != false %}
+    {% include featured-projects.html %}
+  {% endif %}
+  
+  {% if content %}
+    <section class="homepage-content">
+      <div class="content-container">
+        {{ content }}
+      </div>
+    </section>
+  {% endif %}
+</div>
+

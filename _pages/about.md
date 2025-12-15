@@ -1,10 +1,19 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
-author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+layout: home
+title: "Rupak Thapa - UX Designer · Creative Technologist"
+author_profile: false
+show_projects: true
+hero:
+  title: "Rupak Thapa"
+  subtitle: "UX Designer · Creative Technologist · AI-Native Thinker"
+  description: "I design experiences where human intent meets intelligent systems. From UX fundamentals to generative AI workflows, I turn complexity into clarity."
+  cta_primary:
+    text: "View Projects"
+    url: "#featured-projects"
+  cta_secondary:
+    text: "Download CV"
+    url: "/cv/"
 ---
 
 This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!

@@ -1,0 +1,72 @@
+{% include base_path %}
+{% assign project = include.project %}
+
+<article class="project-card">
+  {% if project.image %}
+    <div class="project-card__image">
+      <a href="{{ project.url | relative_url }}">
+        {% if project.image contains "://" %}
+          <img src="{{ project.image }}" alt="{{ project.title }}" />
+        {% else %}
+          <img src="{{ project.image | prepend: '/images/' | prepend: base_path }}" alt="{{ project.title }}" />
+        {% endif %}
+      </a>
+    </div>
+  {% elsif project.excerpt contains '<img' %}
+    {% assign img_src = project.excerpt | split: 'src="' | last | split: '"' | first %}
+    {% if img_src %}
+      <div class="project-card__image">
+        <a href="{{ project.url | relative_url }}">
+          <img src="{{ img_src }}" alt="{{ project.title }}" />
+        </a>
+      </div>
+    {% endif %}
+  {% else %}
+    <div class="project-card__image project-card__image--placeholder">
+      <a href="{{ project.url | relative_url }}">
+        <div class="placeholder-content">
+          <i class="fas fa-image" aria-hidden="true"></i>
+        </div>
+      </a>
+    </div>
+  {% endif %}
+  
+  <div class="project-card__content">
+    {% if project.date %}
+      <span class="project-card__badge">{{ project.date | date: "%Y" }}</span>
+    {% elsif project.year %}
+      <span class="project-card__badge">{{ project.year }}</span>
+    {% endif %}
+    
+    <h3 class="project-card__title">
+      <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+    </h3>
+    
+    {% if project.excerpt %}
+      <p class="project-card__excerpt">{{ project.excerpt | strip_html | remove: '<img' | remove: '/>' | truncatewords: 20 }}</p>
+    {% elsif project.description %}
+      <p class="project-card__excerpt">{{ project.description | truncatewords: 20 }}</p>
+    {% endif %}
+    
+    {% if project.tech %}
+      <div class="project-card__tech">
+        {% if project.tech.first %}
+          {% for tech in project.tech limit: 3 %}
+            <span class="tech-tag">{{ tech }}</span>
+          {% endfor %}
+        {% else %}
+          <span class="tech-tag">{{ project.tech }}</span>
+        {% endif %}
+      </div>
+    {% elsif project.tags %}
+      <div class="project-card__tech">
+        {% for tag in project.tags limit: 3 %}
+          <span class="tech-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    <a href="{{ project.url | relative_url }}" class="project-card__link">View Project →</a>
+  </div>
+</article>
+

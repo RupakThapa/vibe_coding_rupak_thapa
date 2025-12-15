@@ -1,0 +1,48 @@
+{% include base_path %}
+
+<section class="hero-section hero-grid-bg">
+  <div class="hero-overlay"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        {{ page.hero.title | default: "Creative Technologist & UX Designer" }}
+      </h1>
+      <p class="hero-subtitle">
+        {{ page.hero.subtitle | default: "UX Designer · Creative Technologist · AI-Native Thinker" }}
+      </p>
+      {% if page.hero.description %}
+        <p class="hero-description">
+          {{ page.hero.description }}
+        </p>
+      {% endif %}
+      <div class="hero-cta">
+        {% if page.hero.cta_primary %}
+          <a href="{{ page.hero.cta_primary.url }}" class="btn btn-primary">
+            {{ page.hero.cta_primary.text | default: "View Projects" }}
+          </a>
+        {% else %}
+          <a href="#featured-projects" class="btn btn-primary">View Projects</a>
+        {% endif %}
+      </div>
+      
+      <div class="hero-cv-buttons">
+        <h3 class="cv-buttons-title">Download CV</h3>
+        <div class="cv-buttons-grid">
+          <a href="/cv/" class="btn btn-cv btn-cv-text">
+            <i class="fas fa-file-alt" aria-hidden="true"></i>
+            <span>Text CV</span>
+          </a>
+          <a href="/cv/" class="btn btn-cv btn-cv-visual">
+            <i class="fas fa-image" aria-hidden="true"></i>
+            <span>Visual CV</span>
+          </a>
+          <a href="/cv/" class="btn btn-cv btn-cv-audio">
+            <i class="fas fa-headphones" aria-hidden="true"></i>
+            <span>Audio CV</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
